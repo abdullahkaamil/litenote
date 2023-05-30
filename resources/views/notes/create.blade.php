@@ -11,15 +11,13 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <form action="{{route('notes.store')}}" method="post">
                         @csrf
-                        <x-text-input type="text" name="title" placeholder="title" class="w-full"></x-text-input>
-                        @error('title')
-                        <div class="text-red-600 text-sm">{{$message}}</div>
-                        @enderror
-                        <x-text-area type="text" rows="10" name="text" placeholder="type here ......."
+                        <x-text-input :value="@old('title')" type="text" field="title" name="title" placeholder="title"
+                                      class="w-full"></x-text-input>
+
+                        <x-text-area type="text" field="text" :value="@old('text')" rows="10" name="text"
+                                     placeholder="type here ......."
                                      class="w-full mt-6"></x-text-area>
-                        @error('text')
-                        <div class="text-red-600 text-sm">{{$message}}</div>
-                        @enderror
+
                         <x-primary-button class="mt-6"> {{ __('Save') }}</x-primary-button>
                     </form>
                 </div>
